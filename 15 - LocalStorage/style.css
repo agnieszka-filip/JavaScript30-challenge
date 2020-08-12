@@ -79,3 +79,10 @@ h2 {
   outline: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(238, 77, 77);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

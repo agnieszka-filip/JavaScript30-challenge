@@ -60,25 +60,23 @@
         "An Old Dog",
       ];
 
-      let splitBands = [];
+      const clipArticles = (band) => {
+        return band.replace(/^(a |the |an )/i, "").trim();
+      };
 
-      for (let i = 0; i < bands.length; i++) {
-        splitBands.push(bands[i].split(" "));
-      }
-
-      let arr = [];
-
-      for (let i = 0; i < splitBands.length; i++) {
-        for (let j = 0; j < splitBands[i].length; j++) {
-          if (splitBands[i][j].toLocaleLowerCase == "the" || "a" || "an") {
-            return;
-          } else {
-            arr.push(splitBands[i][j].toLocaleLowerCase);
-          }
+      const sortedBands = bands.sort((a, b) => {
+        if (clipArticles(a) > clipArticles(b)) {
+          return 1;
+        } else {
+          return -1;
         }
-      }
+      });
 
-      console.log(arr);
+      console.log(sortedBands);
+
+      document.querySelector("#bands").innerHTML = sortedBands
+        .map((band) => `<li>${band}</li>`)
+        .join("");
     </script>
   </body>
 </html>

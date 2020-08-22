@@ -28,10 +28,10 @@ const showOnCanvas = () => {
 
     //pixels = addRedFilter(pixels);
 
-    //pixels = splitColors(pixels);
-    //ctx.globalAlpha = 0.1;
+    pixels = splitColors(pixels);
+    ctx.globalAlpha = 0.1;
 
-    pixels = addGreenScreen(pixels);
+    //pixels = addGreenScreen(pixels);
 
     ctx.putImageData(pixels, 0, 0);
   }, 16);

@@ -27,10 +27,15 @@ body {
   transition: transform 0.5s;
 }
 
+.fixed-nav .site-wrap {
+  transform: scale(1);
+}
+
 header {
   text-align: center;
   height: 50vh;
-  background: url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
+  background: url(https://images.unsplash.com/photo-1597603382513-802575221488?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+    bottom center no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -76,9 +81,13 @@ li.logo {
   max-width: 0;
   overflow: hidden;
   background: white;
-  transition: all 0.5s;
+  transition: all 1s;
   font-weight: 600;
   font-size: 30px;
+}
+
+.fixed-nav li.logo {
+  max-width: 500px;
 }
 
 li.logo a {

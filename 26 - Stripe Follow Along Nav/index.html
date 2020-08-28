@@ -267,9 +267,25 @@
 
       function showDropdown() {
         this.classList.add("trigger-enter");
+        this.classList.add("open");
         setTimeout(() => {
           this.classList.add("trigger-enter-active");
         }, 150);
+        this.classList.remove("open");
+
+        const dropdown = document.querySelector(".dropdown");
+        const dropdownSize = dropdown.getBoundingClientRect();
+        const navSize = nav.getBoundingClientRect();
+
+        const size = {
+          width: dropdownSize.width,
+          height: dropdownSize.height,
+          top: dropdownSize.top,
+          left: dropdownSize.left,
+        };
+
+        background.style.setProperty("width", `${size.width} + px`);
+        background.style.setProperty("height", `${size.height} + px`);
       }
 
       function hideDropdown() {

@@ -267,29 +267,35 @@
 
       function showDropdown() {
         this.classList.add("trigger-enter");
-        this.classList.add("open");
         setTimeout(() => {
-          this.classList.add("trigger-enter-active");
+          if (this.classList.contains("trigger-enter")) {
+            this.classList.add("trigger-enter-active");
+          }
         }, 150);
-        this.classList.remove("open");
+        background.classList.add("open");
 
         const dropdown = document.querySelector(".dropdown");
-        const dropdownSize = dropdown.getBoundingClientRect();
-        const navSize = nav.getBoundingClientRect();
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = nav.getBoundingClientRect();
 
-        const size = {
-          width: dropdownSize.width,
-          height: dropdownSize.height,
-          top: dropdownSize.top,
-          left: dropdownSize.left,
+        const coords = {
+          width: dropdownCoords.width,
+          height: dropdownCoords.height,
+          top: dropdownCoords.top - navCoords.top,
+          left: dropdownCoords.left - navCoords.left,
         };
 
-        background.style.setProperty("width", `${size.width} + px`);
-        background.style.setProperty("height", `${size.height} + px`);
+        background.style.setProperty("width", `${coords.width}px`);
+        background.style.setProperty("height", `${coords.height}px`);
+        background.style.setProperty(
+          "transform",
+          `translate(${coords.left}px, ${coords.top}px)`
+        );
       }
 
       function hideDropdown() {
         this.classList.remove("trigger-enter", "trigger-enter-active");
+        background.classList.remove("open");
       }
 
       triggers.forEach((trigger) =>
